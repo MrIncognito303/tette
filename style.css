@@ -1,0 +1,249 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9ecef;
+}
+
+header {
+    background: #343a40;
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav a {
+    color: #ffffff;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background: #495057;
+}
+
+h2 {
+    color: #343a40;
+    text-align: center;
+}
+
+.product {
+    background: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product h3 {
+    margin: 0;
+}
+
+.button {
+    background: #007bff;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background: #0056b3;
+}
+
+.response-message {
+    color: green;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #343a40;
+    color: #ffffff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+}
+
+form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e9ecef;
+    overflow-x: hidden; /* Ukrywa przewijanie poziome */
+}
+
+header {
+    background: #343a40;
+    color: #ffffff;
+    padding: 10px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav a {
+    color: #ffffff;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s; /* Animacja przejścia */
+}
+
+nav a:hover {
+    background: #495057;
+    transform: scale(1.1); /* Powiększenie */
+}
+
+h2 {
+    color: #343a40;
+    text-align: center;
+    opacity: 0; /* Ustawiamy na niewidoczny */
+    transform: translateY(-20px); /* Ustawiamy przesunięcie w górę */
+    animation: fadeInUp 0.5s forwards; /* Animacja */
+}
+
+.product {
+    background: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s; /* Animacja na powiększenie */
+}
+
+.product:hover {
+    transform: scale(1.05); /* Powiększenie */
+}
+
+.product h3 {
+    margin: 0;
+}
+
+.button {
+    background: #007bff;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s; /* Animacja przejścia */
+}
+
+.button:hover {
+    background: #0056b3;
+    transform: scale(1.1); /* Powiększenie */
+}
+
+.response-message {
+    color: green;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #343a40;
+    color: #ffffff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+}
+
+form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+/* Animacja pojawiania się */
+@keyframes fadeInUp {
+    to {
+        opacity: 1; /* Końcowy stan */
+        transform: translateY(0); /* Końcowa pozycja */
+    }
+}
+
+/* Animacja dla elementów przy przewijaniu */
+.container section {
+    opacity: 0; /* Ustawiamy na niewidoczny */
+    transform: translateY(50px); /* Ustawiamy przesunięcie w dół */
+    animation: fadeInUp 0.5s forwards; /* Animacja */
+    animation-delay: 0.3s; /* Opóźnienie animacji */
+}
+
+/* Klasa dla widocznych sekcji */
+.visible {
+    opacity: 1; /* Końcowy stan */
+    transform: translateY(0); /* Końcowa pozycja */
+}

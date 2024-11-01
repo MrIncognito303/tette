@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astral Blik Zone - Sklep</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef;
+        }
+
+        header {
+            background: #343a40;
+            color: #ffffff;
+            padding: 10px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: #ffffff;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            background: #495057;
+            transform: scale(1.1);
+        }
+
+        h2 {
+            color: #343a40;
+        }
+
+        .product {
+            background: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product h3 {
+            margin: 0;
+        }
+
+        .button {
+            background: #007bff;
+            color: #ffffff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background: #0056b3;
+            transform: scale(1.1);
+        }
+
+        #cart, #wishlist, #contact, #login {
+            margin-top: 30px;
+        }
+
+        #cartItems, #wishlistItems {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cartItems li, #wishlistItems li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            background: #ffffff;
+        }
+
+        #cartItems button {
+            background: #dc3545;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #cartItems button:hover {
+            background: #c82333;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #343a40;
+            color: #ffffff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="password"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Astral Blik Zone</h1>
+            <nav>
+                <a href="#products">Produkty</a>
+                <a href="#cart">Koszyk</a>
+                <a href="#wishlist">Lista życzeń</a>
+                <a href="#contact">Kontakt</a>
+                <a href="#login">Zaloguj się</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section id="products">
+            <h2>Nasze Produkty</h2>
+            <div class="product">
+                <h3>Brama A</h3>
+                <p>Cena: 100 PLN</p>
+                <button class="button" onclick="addToCart('Brama A', 100)">Dodaj do koszyka</button>
+                <button class="button" onclick="addToWishlist('Brama A', 100)">Dodaj do listy życzeń</button>
+            </div>
+            <div class="product">
+                <h3>Brama B</h3>
+                <p>Cena: 150 PLN</p>
+                <button class="button" onclick="addToCart('Brama B', 150)">Dodaj do koszyka</button>
+                <button class="button" onclick="addToWishlist('Brama B', 150)">Dodaj do listy życzeń</button>
+            </div>
+            <!-- Dodaj więcej produktów według potrzeby -->
+        </section>
+
+        <section id="cart">
+            <h2>Koszyk</h2>
+            <ul id="cartItems"></ul>
+            <p id="cartTotal">Łączna kwota: 0 PLN</p>
+            <button class="button" id="checkoutButton">Złóż zamówienie</button>
+        </section>
+
+        <section id="wishlist">
+            <h2>Lista Życzeń</h2>
+            <ul id="wishlistItems"></ul>
+        </section>
+
+        <section id="contact">
+            <h2>Kontakt</h2>
+            <form id="contactForm">
+                <input type="text" placeholder="Twoje imię" required>
+                <textarea placeholder="Twoja wiadomość" required></textarea>
+                <button type="submit" class="button">Wyślij</button>
+                <p id="contactResponse"></p>
+            </form>
+        </section>
+
+        <section id="login">
+            <h2>Logowanie</h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Nazwa użytkownika" required>
+                <input type="password" id="password" placeholder="Hasło" required>
+                <button type="submit" class="button">Zaloguj się</button>
+                <p id="loginResponse"></p>
+            </form>
+            <form id="registerForm">
+                <h3>Rejestracja</h3>
+                <input type="text" placeholder="Nazwa użytkownika" required>
+                <input type="password" placeholder="Hasło" required>
+                <button type="submit" class="button">Zarejestruj się</button>
+                <p id="registerResponse"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2024 Astral Blik Zone</p>
+    </footer>
+
+    <script>
+        let cart = [];
+        let wishlist = [];
+        let totalAmount = 0;
+
+        function addToCart(productName, productPrice) {
+            const productIndex = cart.findIndex(item => item.name === productName);
+
+            if (productIndex > -1) {
+                cart[productIndex].quantity++;
+            } else {
+                cart.push({ name: productName, price: productPrice, quantity: 1 });
+            }
+
+            totalAmount += productPrice;
+            updateCart();
+            alert(`${productName} dodano do koszyka!`);
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            cartItems.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - ${item.price} PLN x ${item.quantity}`;
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Usuń';
+                removeButton.onclick = () => removeFromCart(item.name, item.price);
+                li.appendChild(removeButton);
+                cartItems.appendChild(li);
+            });
+            document.getElementById('cartTotal').textContent = `Łączna kwota: ${totalAmount} PLN`;
+        }
+
+        function removeFromCart(productName, productPrice) {
+            const productIndex = cart.findIndex(item => item.name === productName);
+            if (productIndex > -1) {
+                if (cart[productIndex].quantity > 1) {
+                    cart[productIndex].quantity--;
+                    totalAmount -= productPrice;
+                } else {
+                    totalAmount -= productPrice;
+                    cart.splice(productIndex, 1);
+                }
+                updateCart();
+            }
+        }
+
+        document.getElementById('checkoutButton').addEventListener('click', function() {
+            if (cart.length === 0) {
+                alert("Koszyk jest pusty!");
+            } else {
+                alert("Zamówienie złożone! Dziękujemy za zakupy.");
+                cart = [];
+                totalAmount = 0;
+                updateCart();
+            }
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            document.getElementById('contactResponse').textContent = "Dziękujemy za Twoją wiadomość!";
+            this.reset();
+        });
+
+        // Lista życzeń
+        function addToWishlist(productName, productPrice) {
+            const productIndex = wishlist.findIndex(item => item.name === productName);
+            if (productIndex === -1) {
+                wishlist.push({ name: productName, price: productPrice });
+                updateWishlist();
+                alert(`${productName} dodano do listy życzeń!`);
+            } else {
+                alert(`${productName} jest już w liście życzeń!`);
+            }
+        }
+
+        function updateWishlist() {
+            const wishlistItems = document.getElementById('wishlistItems');
+            wishlistItems.innerHTML = '';
+            wishlist.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - ${item.price} PLN`;
+                wishlistItems.appendChild(li);
+            });
+        }
+
+        // Logowanie
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Przykładowe dane do logowania
+            if (username === "admin" && password === "password") {
+                document.getElementById('loginResponse').textContent = "Zalogowano pomyślnie!";
+                this.reset();
+            } else {
+                document.getElementById('loginResponse').textContent = "Nieprawidłowa nazwa użytkownika lub hasło.";
+            }
+        });
+
+        // Rejestracja
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = this[0].value;
+            const password = this[1].value;
+            // W tym miejscu można dodać logikę do zapisu użytkownika
+            document.getElementById('registerResponse').textContent = `Użytkownik ${username} zarejestrowany pomyślnie!`;
+            this.reset();
+        });
+    </script>
+</body>
+</html>
